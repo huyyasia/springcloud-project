@@ -13,11 +13,11 @@ public interface UserService {
 
     void createUser(User user);
 
-    User getUser(Long id);
+    User getUser(Integer id);
 
     void updateUser(User user);
 
-    void deleteUser(Long id);
+    void deleteUser(Integer id);
 
     User getByUsername(String username);
 

@@ -21,6 +21,6 @@ public interface UserService {
 
     User getByUsername(String username);
 
-    List<User> getUserByIds(List<Long> ids);
+    List<User> getUserByIds(List<Integer> ids);
 
 }

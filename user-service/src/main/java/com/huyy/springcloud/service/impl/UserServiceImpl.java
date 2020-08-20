@@ -2,9 +2,11 @@ package com.huyy.springcloud.service.impl;
 
 import com.huyy.springcloud.dao.UserMapper;
 import com.huyy.springcloud.domain.User;
+import com.huyy.springcloud.domain.UserExample;
 import com.huyy.springcloud.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 
@@ -41,7 +43,14 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User getByUsername(String username) {
-        return null;
+        UserExample userExample = new UserExample();
+        userExample.createCriteria().andUsernameEqualTo(username);
+        List<User> userList = userMapper.selectByExample(userExample);
+        if(CollectionUtils.isEmpty(userList)) {
+            return null;
+        } else {
+            return userList.get(0);
+        }
     }
 
     @Override

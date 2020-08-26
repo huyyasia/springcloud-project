@@ -40,7 +40,7 @@ public class UserController {
     @GetMapping("/getUserByIds")
     public CommonResult<List<User>> getUserByIds(@RequestParam List<Integer> ids) {
         List<User> userList = userService.getUserByIds(ids);
-
+        userList.forEach(u -> LOGGER.info("根据id获取用户信息:{}", u));
         return new CommonResult<>(userList);
     }
 

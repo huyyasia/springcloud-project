@@ -55,6 +55,8 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public List<User> getUserByIds(List<Integer> ids) {
-        return null;
+        UserExample userExample = new UserExample();
+        userExample.createCriteria().andIdIn(ids);
+        return userMapper.selectByExample(userExample);
     }
 }
